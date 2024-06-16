@@ -1,9 +1,13 @@
 
-![Logo do projeto](https://i.imgur.com/kniMQHu.png)
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
-# Nome do Projeto
+# App template 
 
-Uma breve descrição do projeto aqui.
+Ter um projeto front e backend se comunicando.
+
+[Documentação swagger backend](https://app-template-csy4.onrender.com/swagger-ui/index.html)
 
 ## 🔥 Introdução
 
@@ -32,34 +36,25 @@ Codigo, exemplos
 ```
 
 
-## 🛠️ Executando os testes (caso tenha testes)
-
-Explique como executar os testes automatizados para este sistema.
+## 🛠️ Executando os testes
 
 ```
-Coloque exemplos
+mvn clean install
 ```
 
 ## 📦 Tecnologias usadas:
 
-Coloque aqui as ferramentas que você usou para criar seu projeto, exemplo:
-
-* ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-* ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
-* ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
-
-- Link para pegar as badges: https://github.com/Ileriayo/markdown-badges
-
-Ou pode separar por stacks:
-
 **Front-end:**
-* [React JS](https://react.dev/)
-* [TailwindCSS](https://tailwindcss.com/)
+* ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+* ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+* ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+* ![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 **Back-end:**
-* [NodeJS](https://nodejs.org/).
-* [TypeScript](https://www.typescriptlang.org/) 
-* [Mongo DB](https://mongodb.com/)
+* ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+* ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
+* ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+* ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 ## 👷 Autores
 
