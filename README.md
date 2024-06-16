@@ -12,6 +12,16 @@ Ter um projeto front e backend se comunicando.
 ## 🔥 Introdução
 
 Coloque aqui as instruções e quais são os objetivos desse projeto, funcionalidades.
+Objetivo de ter uma estrutura de arquitetura de uma api em java com spring-boot com exemplos utilizando boas práticas.
+ - Crud de usuário (Post, Get, Put, Delete)
+ - Utilização de java record.
+ - Versionamento de banco de dados com flyway.
+ - Documentação da api com swagger.
+ - Testes unitários
+ - Upload de arquivos CNAB com Spring-batch.
+ - Schedules de jobs.
+ - Autenticação com Spring-security.(em construção)
+
 
 ### ⚙️ Pré-requisitos
 
