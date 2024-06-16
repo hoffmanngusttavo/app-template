@@ -11,39 +11,31 @@ Ter um projeto front e backend se comunicando.
 
 ## 🔥 Introdução
 
-Coloque aqui as instruções e quais são os objetivos desse projeto, funcionalidades.
 Objetivo de ter uma estrutura de arquitetura de uma api em java com spring-boot com exemplos utilizando boas práticas.
  - Crud de usuário (Post, Get, Put, Delete)
- - Utilização de java record.
+ - Utilização de Java record.
  - Versionamento de banco de dados com flyway.
  - Documentação da api com swagger.
- - Testes unitários
+ - Testes unitários.
  - Upload de arquivos CNAB com Spring-batch.
  - Schedules de jobs.
- - Autenticação com Spring-security.(em construção)
+ - Comunicação web entre serviços com WebClient.
+ - Autenticação com Spring-security (em construção).
+ - Emissão de relatório com jasper (em construção).
 
 
 ### ⚙️ Pré-requisitos
 
-Coloque aqui passo a passo que precisa para instalar o projeto e como instalá-lo.
+- Java 17.
+- Postgres 15.
 
-```
-Pode inserir exemplos.
-```
 
-### 🔨 Guia de instalação
+### 🔨 Ferramentas utilizadas
 
-Explique aqui um passo a passo mostrando como deve executar para ter um ambiente de desenvolvimento em execução, desde instalar e rodar o projeto.
-
-Etapas para instalar:
-
-```
-Codigo, exemplos
-```
-Passo 2:
-```
-Codigo, exemplos
-```
+- Vscode.
+- Intellij.
+- Docker desktop.
+- Dbeaver.
 
 
 ## 🛠️ Executando os testes
