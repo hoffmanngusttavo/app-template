@@ -20,13 +20,14 @@ public class GeradorRelatorio<T> {
 
     private Map<String, Object> parametros = new HashMap<>();
     private final String templateJrxml;
-    private final List<T> dataSource;
+    private final List<?> dataSource;
     private final TipoExtensaoArquivo reportType;
 
-    public GeradorRelatorio (String template, List<T> collectionBeans, TipoExtensaoArquivo reportType){
+    public GeradorRelatorio (String template, List<?> collectionBeans, TipoExtensaoArquivo reportType){
         templateJrxml = template;
         dataSource = collectionBeans;
         this.reportType = reportType;
+        addParameter("listaOriginal", collectionBeans);
     }
 
     public GeradorRelatorio addParameter(String key, Object value){
@@ -34,14 +35,15 @@ public class GeradorRelatorio<T> {
         return this;
     }
 
-    public DownloadFile gerarArquivo(String nomeArquivo) throws Exception{
+    public DownloadFile executar(String nomeArquivo) throws Exception{
         byte[] conteudo = exportar();
         return new DownloadFile(conteudo, nomeArquivo, reportType);
     }
 
 
     private byte[] exportar() throws Exception{
-        var filePath = ResourceUtils.getFile("classpath:" + templateJrxml).getAbsolutePath();
+        var file = ResourceUtils.getFile("classpath:" + templateJrxml);
+        var filePath = file.getAbsolutePath();
         var jasperReport = JasperCompileManager.compileReport(filePath);
 
         var beanCollectionDataSource = new JRBeanCollectionDataSource(dataSource);
@@ -50,7 +52,7 @@ public class GeradorRelatorio<T> {
 
         var byteArrayOutputStream = new ByteArrayOutputStream();
 
-        switch (reportType){
+        switch (reportType) {
             case XML -> JasperExportManager.exportReportToXmlStream(jasperPrint, byteArrayOutputStream);
             case XLSX -> this.exportReportXlsxStream(jasperPrint, byteArrayOutputStream);
             case CSV -> this.exportReportCSVStream(jasperPrint, byteArrayOutputStream);

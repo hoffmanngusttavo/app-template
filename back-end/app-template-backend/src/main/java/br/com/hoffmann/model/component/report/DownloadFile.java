@@ -9,12 +9,11 @@ public class DownloadFile {
 
     private final ByteArrayResource resource;
 
-
     private final String nomeArquivo;
 
     public DownloadFile(byte[] conteudo, String nomeArquivo, TipoExtensaoArquivo tipo){
          this.resource = new ByteArrayResource(conteudo);
-         this.nomeArquivo = nomeArquivo + "_" + tipo.name().toLowerCase();
+         this.nomeArquivo = nomeArquivo + tipo.getExtensao();
     }
 
 
