@@ -3,10 +3,10 @@ package br.com.hoffmann.web.controller.impl;
 import br.com.hoffmann.model.component.UsuarioComponent;
 import br.com.hoffmann.model.dto.UsuarioDTO;
 import br.com.hoffmann.model.dto.input.UsuarioInputDTO;
+import br.com.hoffmann.model.dto.response.PageableResponseDTO;
 import br.com.hoffmann.web.controller.UsuarioController;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
@@ -39,9 +39,9 @@ public class UsuarioControllerImpl  implements UsuarioController {
 
     @Override
     @GetMapping
-    public ResponseEntity<Page<UsuarioDTO>> lista(@PageableDefault(size = 15, sort = {"login"}) Pageable paginacao) {
+    public ResponseEntity<PageableResponseDTO> lista(@PageableDefault(size = 15, sort = {"login"}) Pageable paginacao) {
         var page = component.listaPaginada(paginacao);
-        return ResponseEntity.ok(page);
+        return ResponseEntity.ok(new PageableResponseDTO(page));
     }
 
     @Override

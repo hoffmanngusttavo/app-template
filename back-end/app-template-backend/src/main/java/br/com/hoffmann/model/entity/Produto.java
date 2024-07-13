@@ -12,12 +12,12 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "CATEGORIA_PRODUTO")
+@Table(name = "PRODUTO")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoriaProduto implements BaseEntity, BaseAudit {
+public class Produto implements BaseEntity, BaseAudit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,10 @@ public class CategoriaProduto implements BaseEntity, BaseAudit {
     private String nome;
 
     private boolean ativo = true;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false, name = "cod_categoria")
+    private CategoriaProduto categoriaProduto;
 
     @Embedded
     private DadosAuditoria auditoria;

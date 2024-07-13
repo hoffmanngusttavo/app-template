@@ -9,8 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Tag(name = "Categorias de produtos")
-public interface CategoriaProdutoController {
+@Tag(name = "Produtos")
+public interface ProdutoController {
 
 
      @Operation(summary = "Buscar pelo id")
@@ -19,7 +19,7 @@ public interface CategoriaProdutoController {
      @Operation(summary = "Cadastrar novo")
      ResponseEntity<Long> cadastrarNovo(CategoriaProdutoInputDTO dto, UriComponentsBuilder uriBuilder);
 
-     @Operation(summary = "Buscar todas as categorias")
+     @Operation(summary = "Buscar todos os produtos")
      ResponseEntity<PageableResponseDTO> listar(Pageable paginacao);
 
      @Operation(summary = "Inativar pelo id")

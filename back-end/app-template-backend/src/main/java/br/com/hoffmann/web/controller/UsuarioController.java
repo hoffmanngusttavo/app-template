@@ -2,10 +2,10 @@ package br.com.hoffmann.web.controller;
 
 import br.com.hoffmann.model.dto.UsuarioDTO;
 import br.com.hoffmann.model.dto.input.UsuarioInputDTO;
+import br.com.hoffmann.model.dto.response.PageableResponseDTO;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -22,7 +22,7 @@ public interface UsuarioController  {
 
 
      @Operation(summary = "Buscar todos os usuários")
-     ResponseEntity<Page<UsuarioDTO>> lista(Pageable paginacao);
+     ResponseEntity<PageableResponseDTO> lista(Pageable paginacao);
 
 
      /**

@@ -4,7 +4,7 @@ import br.com.hoffmann.model.component.CategoriaProdutoComponent;
 import br.com.hoffmann.model.dto.CategoriaProdutoDTO;
 import br.com.hoffmann.model.dto.input.CategoriaProdutoInputDTO;
 import br.com.hoffmann.model.dto.response.PageableResponseDTO;
-import br.com.hoffmann.web.controller.CategoriaProdutoController;
+import br.com.hoffmann.web.controller.ProdutoController;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Pageable;
@@ -16,8 +16,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/categoria-produto")
-public class CategoriaProdutoControllerImpl implements CategoriaProdutoController {
+@RequestMapping("/api/v1/produto")
+public class ProdutoControllerImpl implements ProdutoController {
 
     private final CategoriaProdutoComponent component;
 
