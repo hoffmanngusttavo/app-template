@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Tag(name = "Usuários")
@@ -31,6 +30,6 @@ public interface UsuarioController  {
       * */
      @Hidden
      @Operation(summary = "Remover pelo id")
-     ResponseEntity<Void> deleteById(@PathVariable Long id);
+     ResponseEntity<Void> deleteById(Long id);
 
 }

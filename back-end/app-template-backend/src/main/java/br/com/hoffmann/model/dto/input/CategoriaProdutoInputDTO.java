@@ -16,16 +16,12 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsuarioInputDTO implements Serializable {
+public class CategoriaProdutoInputDTO implements Serializable {
 
 
-    @NotBlank(message = "{login.obrigatorio}")
-    @Size(min = 2, max = 20, message = "{min.max.login.caracteres}")
-    private String login;
-
-    @NotBlank(message = "{senha.obrigatorio}")
-    @Size(min = 6, max = 20, message = "{min.max.senha.caracteres}")
-    private String senha;
+    @NotBlank(message = "{nome.obrigatorio}")
+    @Size(min = 2, max = 250, message = "{min.max.nome.caracteres}")
+    private String nome;
 
     @NotBlank(message = "{criadopor.obrigatorio}")
     private String criadoPor;

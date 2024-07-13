@@ -2,6 +2,8 @@ package br.com.hoffmann.model.entity.base;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import lombok.*;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -33,12 +35,14 @@ public class DadosAuditoria {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updated;
 
-
+    @PrePersist
     public void prePersist(){
         created = LocalDateTime.now();
         updated = LocalDateTime.now();
     }
 
+
+    @PreUpdate
     public void preUpdate(){
         updated = LocalDateTime.now();
     }

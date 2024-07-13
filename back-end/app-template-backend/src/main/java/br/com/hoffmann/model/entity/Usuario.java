@@ -37,15 +37,4 @@ public class Usuario implements BaseEntity {
 
 
 
-    @PrePersist
-    public void prePersist(){
-       dadosAuditoria.prePersist();
-    }
-
-    @PreUpdate
-    public void preUpdate(){
-        dadosAuditoria.preUpdate();
-    }
-
-
 }

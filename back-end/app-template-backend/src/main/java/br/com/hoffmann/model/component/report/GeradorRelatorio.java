@@ -97,7 +97,7 @@ public class GeradorRelatorio<T> {
             xlsxExporter.setExporterInput(new SimpleExporterInput(jasperPrint));
             xlsxExporter.setExporterOutput(new SimpleOutputStreamExporterOutput(xlsReport));
             SimpleXlsxReportConfiguration xlsxreportConfig = new SimpleXlsxReportConfiguration();
-            xlsxreportConfig.setSheetNames(new String[] { "Some Report" });
+            xlsxreportConfig.setSheetNames(new String[] { "Relatório" });
             xlsxreportConfig.setRemoveEmptySpaceBetweenRows(true);
             xlsxreportConfig.setForcePageBreaks(false);
             xlsxreportConfig.setWrapText(false);
