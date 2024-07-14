@@ -31,6 +31,10 @@ public class CategoriaProduto implements BaseEntity, BaseAudit {
     @Embedded
     private DadosAuditoria auditoria;
 
+    public CategoriaProduto(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String getCreatedBy() {
         return auditoria.getCreatedBy();

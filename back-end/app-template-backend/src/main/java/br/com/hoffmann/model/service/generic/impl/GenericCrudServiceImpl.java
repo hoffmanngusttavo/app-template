@@ -6,6 +6,7 @@ import br.com.hoffmann.model.service.exception.EntityNotFoundException;
 import br.com.hoffmann.model.service.exception.ServiceException;
 import br.com.hoffmann.model.service.generic.GenericCrudService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,9 @@ public class GenericCrudServiceImpl <T extends BaseEntity> implements GenericCru
     public T save(T entity) {
         try {
            return repository.save(entity);
-        }catch (Exception ex){
+        } catch (DataIntegrityViolationException ex){
+            throw ex;
+        } catch (Exception ex){
             throw new ServiceException(ex);
         }
     }

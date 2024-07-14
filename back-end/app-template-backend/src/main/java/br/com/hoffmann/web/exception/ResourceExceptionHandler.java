@@ -3,6 +3,8 @@ package br.com.hoffmann.web.exception;
 import br.com.hoffmann.model.service.exception.EntityNotFoundException;
 import br.com.hoffmann.model.service.exception.ServiceException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import org.hibernate.TypeMismatchException;
 import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -34,8 +36,27 @@ public class ResourceExceptionHandler {
                 .body(new StandardError.StandardErrorBuilder()
                         .timestamp(Instant.now())
                         .status(HttpStatus.CONFLICT.value())
-                        .errors(List.of("Objeto está relacionado a outro item"))
+                        .errors(List.of("Objeto está relacionado a outro item, ou não existe"))
                         .message(exception.getMessage())
+                        .path(request.getRequestURI())
+                        .build());
+
+    }
+
+    @ExceptionHandler({ ConstraintViolationException.class })
+    public ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex, HttpServletRequest request) {
+        var errors = new ArrayList<String>();
+        for (ConstraintViolation<?> violation : ex.getConstraintViolations()) {
+            errors.add(violation.getRootBeanClass().getName() + " " +
+                    violation.getPropertyPath() + ": " + violation.getMessage());
+        }
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new StandardError.StandardErrorBuilder()
+                        .timestamp(Instant.now())
+                        .status(HttpStatus.BAD_REQUEST.value())
+                        .errors(errors)
+                        .message(ex.getLocalizedMessage())
                         .path(request.getRequestURI())
                         .build());
 

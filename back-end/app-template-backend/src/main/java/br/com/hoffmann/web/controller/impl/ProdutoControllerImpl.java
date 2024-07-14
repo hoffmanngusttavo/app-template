@@ -1,8 +1,8 @@
 package br.com.hoffmann.web.controller.impl;
 
-import br.com.hoffmann.model.component.CategoriaProdutoComponent;
-import br.com.hoffmann.model.dto.CategoriaProdutoDTO;
-import br.com.hoffmann.model.dto.input.CategoriaProdutoInputDTO;
+import br.com.hoffmann.model.component.ProdutoComponent;
+import br.com.hoffmann.model.dto.ProdutoDTO;
+import br.com.hoffmann.model.dto.input.ProdutoInputDTO;
 import br.com.hoffmann.model.dto.response.PageableResponseDTO;
 import br.com.hoffmann.web.controller.ProdutoController;
 import jakarta.validation.Valid;
@@ -19,20 +19,20 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequestMapping("/api/v1/produto")
 public class ProdutoControllerImpl implements ProdutoController {
 
-    private final CategoriaProdutoComponent component;
+    private final ProdutoComponent component;
 
     @Override
     @GetMapping("/{id}")
-    public ResponseEntity<CategoriaProdutoDTO> buscarPorId(@PathVariable("id") Long id) {
+    public ResponseEntity<ProdutoDTO> buscarPorId(@PathVariable("id") Long id) {
         return  ResponseEntity.ok()
                 .body(component.buscarPorId(id));
     }
 
     @Override
     @PostMapping
-    public ResponseEntity<Long> cadastrarNovo(@Valid @RequestBody CategoriaProdutoInputDTO dto, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<Long> cadastrarNovo(@Valid @RequestBody ProdutoInputDTO dto, UriComponentsBuilder uriBuilder) {
         var codigo = component.cadastrar(dto);
-        var uri = uriBuilder.path("/api/v1/categoria-produto/{id}").buildAndExpand(codigo).toUri();
+        var uri = uriBuilder.path("/api/v1/produto/{id}").buildAndExpand(codigo).toUri();
         return ResponseEntity.created(uri).body(codigo);
     }
 

@@ -1,8 +1,8 @@
 package br.com.hoffmann.model.component;
 
 import br.com.hoffmann.model.component.converter.ProdutoConverter;
-import br.com.hoffmann.model.dto.CategoriaProdutoDTO;
-import br.com.hoffmann.model.dto.input.CategoriaProdutoInputDTO;
+import br.com.hoffmann.model.dto.ProdutoDTO;
+import br.com.hoffmann.model.dto.input.ProdutoInputDTO;
 import br.com.hoffmann.model.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -18,21 +18,19 @@ public class ProdutoComponent {
     private final ProdutoConverter converter;
     private final ProdutoService service;
 
-    public CategoriaProdutoDTO buscarPorId(Long id) {
-        var entity = service.findById(id);
-        return converter.converterEntidadeParaDTO(entity);
+    public ProdutoDTO buscarPorId(Long id) {
+        return service.getInfosById(id);
     }
 
     @Transactional
-    public Long cadastrar(CategoriaProdutoInputDTO dto) {
-       var novoRegistro = converter.converterDTOParaEntidade(dto);
-       var categoriaSalvo = service.save(novoRegistro);
-       return categoriaSalvo.getId();
+    public Long cadastrar(ProdutoInputDTO dto) {
+       var newItem = converter.converterDTOParaEntidade(dto);
+       var saved = service.save(newItem);
+       return saved.getId();
     }
 
-    public Page<CategoriaProdutoDTO> listarTodos(Pageable paginacao) {
-        var page = service.findAllPageable(paginacao);
-        return page.map(converter::converterEntidadeParaDTO);
+    public Page<ProdutoDTO> listarTodos(Pageable paginacao) {
+        return service.getAllPageable(paginacao);
     }
 
     @Transactional

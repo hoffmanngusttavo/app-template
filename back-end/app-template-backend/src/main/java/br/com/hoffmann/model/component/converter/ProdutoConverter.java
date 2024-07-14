@@ -1,7 +1,7 @@
 package br.com.hoffmann.model.component.converter;
 
-import br.com.hoffmann.model.dto.CategoriaProdutoDTO;
-import br.com.hoffmann.model.dto.input.CategoriaProdutoInputDTO;
+import br.com.hoffmann.model.dto.input.ProdutoInputDTO;
+import br.com.hoffmann.model.entity.CategoriaProduto;
 import br.com.hoffmann.model.entity.Produto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -11,19 +11,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ProdutoConverter {
 
-    public CategoriaProdutoDTO converterEntidadeParaDTO(Produto categoria){
-        return CategoriaProdutoDTO.builder()
-                .criadoPor(categoria.getCreatedBy())
-                .dataCadastro(categoria.getCreated())
-                .nome(categoria.getNome())
-                .ativo(categoria.isAtivo())
-                .build();
-    }
-
-    public Produto converterDTOParaEntidade(CategoriaProdutoInputDTO dto) {
+    public Produto converterDTOParaEntidade(ProdutoInputDTO dto) {
         var categoria = new Produto();
         categoria.setNome(dto.getNome());
         categoria.setAuditoria(dto.getAuditoria());
+        categoria.setCategoriaProduto(new CategoriaProduto(dto.getIdCategoriaProduto()));
         return categoria;
     }
 }
