@@ -2,6 +2,7 @@ package br.com.hoffmann.model.dto.input;
 
 import br.com.hoffmann.model.entity.base.DadosAuditoria;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ public class UsuarioInputDTO implements Serializable {
 
 
     @NotBlank(message = "{login.obrigatorio}")
-    @Size(min = 2, max = 20, message = "{min.max.login.caracteres}")
+    @Email
     private String login;
 
     @NotBlank(message = "{senha.obrigatorio}")
