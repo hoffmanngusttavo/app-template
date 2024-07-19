@@ -35,7 +35,7 @@ public abstract class TemplateEmail {
 
     private String formatTemplateEmail(Map<String, String> itens) {
 
-        String template = null;
+        String template;
         try {
             template = this.loadTemplate();
         } catch (IOException e) {

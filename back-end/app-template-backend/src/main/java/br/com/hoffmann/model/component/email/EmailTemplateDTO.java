@@ -9,9 +9,9 @@ import java.util.Map;
 public class EmailTemplateDTO {
 
 
-    private String emailTo;
+    private final String emailTo;
 
-    private Map<String, String> itens = new HashMap<>();
+    private final Map<String, String> itens = new HashMap<>();
 
     public EmailTemplateDTO(String emailTo) {
         this.emailTo = emailTo;
