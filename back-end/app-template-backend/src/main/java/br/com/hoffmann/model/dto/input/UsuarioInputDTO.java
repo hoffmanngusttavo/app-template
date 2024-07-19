@@ -31,6 +31,10 @@ public class UsuarioInputDTO implements Serializable {
     @NotBlank(message = "{criadopor.obrigatorio}")
     private String criadoPor;
 
+    @NotBlank
+    @Size(min = 3, max = 50, message = "{min.max.nome.caracteres}")
+    private String nome;
+
     @JsonIgnore
     public DadosAuditoria getAuditoria() {
         return DadosAuditoria.builder()

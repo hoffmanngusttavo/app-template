@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface UsuarioRepository extends GenericCrudRepository<Usuario> {
 
 
-
+    boolean existsByLogin(String login);
 }

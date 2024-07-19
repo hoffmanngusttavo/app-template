@@ -5,18 +5,21 @@ import br.com.hoffmann.model.repository.generic.GenericCrudRepository;
 import br.com.hoffmann.model.service.exception.EntityNotFoundException;
 import br.com.hoffmann.model.service.exception.ServiceException;
 import br.com.hoffmann.model.service.generic.GenericCrudService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 
-public class GenericCrudServiceImpl <T extends BaseEntity> implements GenericCrudService<T> {
+public class GenericCrudServiceImpl <T extends BaseEntity, R extends GenericCrudRepository<T>>
+        implements GenericCrudService<T> {
 
 
-   @Autowired
-   protected GenericCrudRepository<T> repository;
+   protected final R repository;
+
+    public GenericCrudServiceImpl(R repository) {
+        this.repository = repository;
+    }
 
     @Override
     @Transactional

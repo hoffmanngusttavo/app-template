@@ -9,19 +9,24 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional(readOnly = true)
-public class CategoriaProdutoServiceImpl extends GenericCrudServiceImpl<CategoriaProduto> implements CategoriaProdutoService {
+public class CategoriaProdutoServiceImpl extends GenericCrudServiceImpl<CategoriaProduto, CategoriaProdutoRepository>
+        implements CategoriaProdutoService {
 
+
+    public CategoriaProdutoServiceImpl(CategoriaProdutoRepository repository) {
+        super(repository);
+    }
 
     @Override
     @Transactional
     public void inativar(Long id) {
-        ((CategoriaProdutoRepository) repository).inativar(id);
+        repository.inativar(id);
     }
 
     @Override
     @Transactional
     public void ativar(Long id) {
-        ((CategoriaProdutoRepository) repository).ativar(id);
+        repository.ativar(id);
     }
 
 }

@@ -15,13 +15,17 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class TransacaoCnabServiceImpl extends GenericCrudServiceImpl<TransacaoCNAB> implements TransacaoCnabService {
+public class TransacaoCnabServiceImpl extends GenericCrudServiceImpl<TransacaoCNAB, TransacaoRepository> implements TransacaoCnabService {
 
+
+    public TransacaoCnabServiceImpl(TransacaoRepository repository) {
+        super(repository);
+    }
 
     @Override
     public List<TransacaoReport> getTotaisTransacoesPorLoja() {
 
-        var listaTransacoes = ((TransacaoRepository) repository).findAllByOrderByNomeDaLojaAscIdDesc();
+        var listaTransacoes = repository.findAllByOrderByNomeDaLojaAscIdDesc();
 
         var reportMap = new LinkedHashMap<String, TransacaoReport>();
 

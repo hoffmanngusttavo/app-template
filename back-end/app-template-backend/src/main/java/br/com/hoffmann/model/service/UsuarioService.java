@@ -7,5 +7,5 @@ import br.com.hoffmann.model.service.generic.GenericCrudService;
 public interface UsuarioService extends GenericCrudService<Usuario> {
 
 
-
+    boolean existLogin(String login);
 }
