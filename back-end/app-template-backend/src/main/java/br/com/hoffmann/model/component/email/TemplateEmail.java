@@ -9,6 +9,7 @@ import org.springframework.core.io.ClassPathResource;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public abstract class TemplateEmail {
 
@@ -43,9 +44,10 @@ public abstract class TemplateEmail {
         }
 
         for (Map.Entry<String, String> item : itens.entrySet()) {
-            var key = this.formatKey(item.getKey());
+            var formattedKey = this.formatKey(item.getKey());
+            var regex = Pattern.quote(formattedKey);
             var value = item.getValue();
-            template = template.replaceAll(key, value);
+            template = template.replaceAll(regex, value);
         }
 
         return template;

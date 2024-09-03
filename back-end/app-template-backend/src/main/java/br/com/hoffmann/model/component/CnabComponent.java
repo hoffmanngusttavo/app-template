@@ -3,7 +3,6 @@ package br.com.hoffmann.model.component;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -21,18 +20,16 @@ import java.nio.file.Paths;
 public class CnabComponent {
 
     private final Path fileStorageLocation;
-
-    @Autowired
-    @Qualifier("jobLauncherAsync")
-    private JobLauncher jobLauncher;
-
-    @Autowired
-    @Qualifier("importarArquivoCnabJob")
-    private Job job;
+    private final JobLauncher jobLauncher;
+    private final Job job;
 
 
-    public CnabComponent(@Value("${file.upload-dir}") String fileUploadDir) {
+    public CnabComponent(@Value("${file.upload-dir}") String fileUploadDir,
+                         @Qualifier("jobLauncherAsync") JobLauncher jobLauncher,
+                         @Qualifier("importarArquivoCnabJob") Job job) {
         this.fileStorageLocation = Paths.get(fileUploadDir);
+        this.jobLauncher = jobLauncher;
+        this.job = job;
     }
 
 
